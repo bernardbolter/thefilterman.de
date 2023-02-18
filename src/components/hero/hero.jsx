@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 
-import Phone from '../../svg/phone'
+// import Phone from '../../svg/phone'
 import styles from './hero.module.scss'
 
 const Hero = () => {
@@ -31,7 +31,7 @@ const Hero = () => {
             )}
             <div 
                 // className={showPhone ? `${styles.colorful} ${styles.mask}` : `${styles.colorful}`}
-                className={showPhone ? `${styles.colorful} ${styles.mask}` : `${styles.colorful}`}
+                className={showPhone ? `${styles.colorful} ${styles.mask}` : `$`}
                 ref={maskRef}
             >
                 <h1 className={styles.the}>THE</h1>
