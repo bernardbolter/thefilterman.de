@@ -15,7 +15,6 @@ const Hero = () => {
     })
 
     const handleCursorMove = pos => {
-        // console.log(pos)
         let x = pos.clientX / window.innerWidth * 100
         let y = pos.clientY / window.innerHeight * 100
 
@@ -64,15 +63,6 @@ const Hero = () => {
                     />
                 </div>
             )}
-            {/* <img 
-                src="/brandenburger-tor-1899-og_xl.jpg"
-                className={showPhone ? `${styles.plain} ${styles.mask}` : `${styles.plain}`} 
-                ref={maskRef}
-            />
-            <img src="/brandenburger-tor-1899_xl.jpg"
-                className={styles.colorful}
-            />
-            <img src="/phone-mask_l.png" /> */}
             <div 
                 className={showPhone ? `${styles.colorful} ${styles.mask}` : `${styles.colorful}`}
                 ref={maskRef}
