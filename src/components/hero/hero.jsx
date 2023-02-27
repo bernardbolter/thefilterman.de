@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 
+import Logo from '../logo/logo'
+import Socials from '../socials/socials'
+
 import styles from './hero.module.scss'
 
 const Hero = () => {
