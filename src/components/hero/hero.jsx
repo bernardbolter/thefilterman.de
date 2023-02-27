@@ -54,48 +54,45 @@ const Hero = () => {
 
     return (
         <section className={styles.container}>
+          <Logo />
+          <Socials />
             {showPhone && (
-                <div className={styles.phone}>
-                    <img 
-                        src="/phone_l.png" 
-                        alt="phone case" 
-                        style={{ 
-                            transform: `translate(${phoneX}px, ${phoneY}px)`,
-                            top: "0",
-                            left: "0"
-                        }}    
-                    />
-                </div>
+              <div className={styles.phone}>
+                <img 
+                  src="/phone_l.png" 
+                  alt="phone case" 
+                  style={{ 
+                      transform: `translate(${phoneX}px, ${phoneY}px)`,
+                      top: "0",
+                      left: "0"
+                  }}    
+                />
+              </div>
             )}
-            {/* <img 
-                src="/brandenburger-tor-1899-og_xl.jpg"
-                className={showPhone ? `${styles.plain} ${styles.mask}` : `${styles.plain}`} 
-                ref={maskRef}
-            />
-            <img src="/brandenburger-tor-1899_xl.jpg"
-                className={styles.colorful}
-            />
-            <img src="/phone-mask_l.png" /> */}
+
             <div 
-                className={showPhone ? `${styles.colorful} ${styles.mask}` : `${styles.colorful}`}
+                className={showPhone ? `${styles.colorful} ${styles.mask} ${styles.name}` : `${styles.colorful} ${styles.name}`}
                 ref={maskRef}
                 style={{
                     zIndex: showPhone ? 102 : 100
                 }}
             >
-                <h1 className={styles.the}>THE</h1>
-                <h1 className={styles.fil}>FIL</h1>
-                <h1 className={styles.ter}>TER</h1>
-                <h1 className={styles.man}>MAN</h1>
+              <h1>
+                <span className={styles.the}>THE</span>
+                <span className={styles.fil}>FIL</span>
+                <span className={styles.ter}>TER</span>
+                <span className={styles.man}>MAN</span>
+              </h1>
             </div>
             <div 
-                className={styles.plain}
+                className={`${styles.plain} ${styles.name}`}
             >
-                <h1 className={styles.the}>THE</h1>
-                <h1 className={styles.fil}>FIL</h1>
-                <h1 className={styles.ter}>TER</h1>
-                <h1 className={styles.man}>MAN</h1>
-
+              <h1>
+                <span className={styles.the}>THE</span>
+                <span className={styles.fil}>FIL</span>
+                <span className={styles.ter}>TER</span>
+                <span className={styles.man}>MAN</span>
+              </h1>
             </div>
             <div 
                 className={styles.showPhoneButton}

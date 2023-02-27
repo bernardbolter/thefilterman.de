@@ -1,3 +1,22 @@
+@import '../../styles/var';
+
 .container {
-  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 201;
+  width: 60px;
+  height: 60px;
+  background-color: $accent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+
+
+  svg {
+    fill: $brand;
+    width: 80%;
+    margin-top: 4px;
+  }
 }

@@ -45,8 +45,8 @@
     align-items: center;
     position: absolute;
     z-index: 101;
-    background: #ddd;
-    color: #333;
+    background: $background;
+    color: $text;
 }
 
 .mask {
@@ -67,6 +67,38 @@
     align-items: center;
     position: absolute;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+
+    span {
+      text-align: center;
+    }
+  }
+
+  .the {
+    display: block;
+  }
+
+  .fil {
+    display: inline-block;
+  }
+
+  .ter {
+    display: inline-block;
+  }
+
+  .man {
+    display: block;
+  }
 }
 
 .showPhoneButton {
