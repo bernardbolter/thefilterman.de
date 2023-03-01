@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from 'react'
 
 import Logo from '../logo/logo'
 import Socials from '../socials/socials'
