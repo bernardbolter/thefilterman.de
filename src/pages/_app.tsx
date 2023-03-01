@@ -1,16 +1,20 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Azeret_Mono } from '@next/font/google'
+import { Inconsolata, Jost } from '@next/font/google'
 
-const azeretMono = Azeret_Mono({
-  weight: ['400', '900'],
-  subsets: ['latin']
-})
+const inconsolata = Inconsolata({subsets: ['latin'], variable: '--font-inconsolata'})
+const jost = Jost({subsets: ['latin'], variable: '--font-jost'})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={azeretMono.className}>
+    <>
+      <style jsx global>{`
+        :root {
+          --inconsolata-font: ${inconsolata.style.fontFamily};
+          --jost-font: ${jost.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
-    </main>
+    </>
   )
 }
