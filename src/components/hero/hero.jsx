@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useWindowSize } from '../../helpers/useWindowSize'
 
 import Logo from '../logo/logo'
 import Socials from '../socials/socials'
@@ -7,9 +8,12 @@ import styles from './hero.module.scss'
 
 const Hero = () => {
     const maskRef = useRef()
+    const size = useWindowSize()
     const [showPhone, setShowPhone] = useState(false)
     const [phoneX, setPhoneX] = useState(0)
     const [phoneY, setPhoneY] = useState(0)
+    const [phoneWidth, setPhoneWidth] = useState(0)
+    const [phoneHeight, setPhoneHeight] = useState(0)
 
     useEffect(() => {
         window.addEventListener('pointermove', handleCursorMove)
@@ -17,32 +21,22 @@ const Hero = () => {
         return () => window.removeEventListener('pointermove', handleCursorMove)
     })
 
+    useEffect(() => {
+      if (size.width < 769) {
+        setPhoneWidth(187)
+        setPhoneHeight(338)
+      } else {
+        setPhoneWidth(245)
+        setPhoneHeight(460)
+      }
+    }, [size])
+
     const handleCursorMove = pos => {
         let x = pos.clientX / window.innerWidth * 100
         let y = pos.clientY / window.innerHeight * 100
 
-        let phoneOffsetX
-        let phoneOffsetY
-
-        let phoneWidth = 85
-        let phoneHeight = 170
-
-
-        if (pos.clientX > window.innerWidth / 2) {
-            let xOffsetMore = ((pos.clientX - (window.innerWidth / 2)) / (window.innerWidth / 2)) * phoneWidth
-            phoneOffsetX = xOffsetMore + phoneWidth
-        } else {
-            let xOffsetLess = (pos.clientX / (window.innerWidth / 2)) * phoneWidth
-            phoneOffsetX = xOffsetLess
-        }
-
-        if (pos.clientY > window.innerHeight / 2) {
-            let yOffsetMore = ((pos.clientY - (window.innerHeight / 2)) / (window.innerHeight / 2) )* phoneHeight
-            phoneOffsetY = yOffsetMore + phoneHeight
-        } else {
-            let yOffsetLess = (pos.clientY / (window.innerHeight / 2)) * phoneHeight
-            phoneOffsetY = yOffsetLess
-        }
+        let phoneOffsetX = (pos.clientX / size.width) * phoneWidth
+        let phoneOffsetY = (pos.clientY / size.height) * phoneHeight
 
         setPhoneX(pos.clientX - phoneOffsetX)
         setPhoneY(pos.clientY - phoneOffsetY)
@@ -58,12 +52,12 @@ const Hero = () => {
             {showPhone && (
               <div className={styles.phone}>
                 <img 
-                  src="/phone_l.png" 
+                  src={size.width < 769 ? "/phone_l.png" : "/phone-mask_xl.png"}
                   alt="phone case" 
                   style={{ 
                       transform: `translate(${phoneX}px, ${phoneY}px)`,
-                      top: "0",
-                      left: "0"
+                      top: -5,
+                      left: 0
                   }}    
                 />
               </div>
