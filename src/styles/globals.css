@@ -12,7 +12,11 @@
 body, html {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   font-family: var(--montserat-font);
+=======
+  font-family: var(--jost-font);
+>>>>>>> ecd5825b7d38fce645bf8363ca4a4fe9bca92f98
 }
 
 h1 {
