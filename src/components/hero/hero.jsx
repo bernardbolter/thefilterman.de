@@ -5,6 +5,7 @@ import Logo from '../logo/logo'
 import Socials from '../socials/socials'
 
 import styles from './hero.module.scss'
+import filterStyles from '../../data/filterStyles'
 
 const Hero = () => {
     const maskRef = useRef()
@@ -58,15 +59,16 @@ const Hero = () => {
                       transform: `translate(${phoneX}px, ${phoneY}px)`,
                       top: -5,
                       left: 0
-                  }}    
+                  }}
+                  onClick={() => showPhone ? setShowPhone(false) : null}   
                 />
               </div>
             )}
             <div 
-                className={showPhone ? `${styles.colorful} ${styles.mask} ${styles.name}` : `${styles.colorful} ${styles.name}`}
+                className={showPhone ? `${styles.colorful} ${styles.mask} ${styles.name} ${styles.textStyle}` : `${styles.colorful} ${styles.name} ${styles.textStyle}`}
                 ref={maskRef}
-                style={{
-                    zIndex: showPhone ? 102 : 100
+                style={{ zIndex: showPhone ? 102 : 100,
+                  ...filterStyles[0] 
                 }}
             >
               <h1>
@@ -86,11 +88,14 @@ const Hero = () => {
                 <span className={styles.man}>MAN</span>
               </h1>
             </div>
-            <div 
-                className={styles.showPhoneButton}
-                onClick={() => setShowPhone(!showPhone)}
-            >
-                <h4>see more...</h4>
+            <div className={styles.showPhoneButton} >
+                <h4
+                  onClick={() => {
+                    showPhone
+                    ? window.scrollTo({top: size.height, behavior: 'smooth'})
+                    : setShowPhone(!showPhone) 
+                  }}
+                >{showPhone ? 'learn more...' : 'see more...'}</h4>
             </div>
         </section>
     )
