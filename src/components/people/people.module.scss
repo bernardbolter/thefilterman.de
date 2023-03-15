@@ -1,0 +1,14 @@
+@import '../../styles/var';
+
+.container {
+    width: 100%;
+    position: relative;
+    min-width: 300px;
+    overflow: hidden;
+}
+
+.image {
+    width: 120%;
+    margin: 0 auto;
+    object-position: 50% 50%;
+}
