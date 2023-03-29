@@ -6,9 +6,9 @@ import TikTok from '../../svg/tik-tok'
 
 import styles from './socials.module.scss'
 
-const Socials = () => {
+const Socials = ({ component }) => {
   return (
-    <div className={styles.container}>
+    <div className={component === 'footer' ? styles.footerContainer : styles.container}>
       <Link href="">
         <Instagram />
       </Link>

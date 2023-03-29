@@ -10,9 +10,68 @@
   margin: 0;
   padding: 30px 0;
   background: $brandMuted;
+  // background: linear-gradient(to right, $brand, $brandMuted);
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (min-width: 500px) {
+    width: 50%;
+  }
+
+  h1 {
+    color: $lightGrey;
+  }
+}
+
+.maskContainer {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 85%;
+    fill: $brand;
+    position: relative;
+    z-index: 102;
+    margin: 10px 0 0 0;
+  }
+
+  .maskBack {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background: $lightGrey;
+    position: absolute;
+    z-index: 101;
+  }
+}
+
+.contact {
+  width: 100%;
+
+  @media screen and (min-width: 500px) {
+    width: 25%;
+  }
+}
+
+.links {
+  width: 100%;
+
+  @media screen and (min-width: 500px) {
+    width: 25%;
   }
 }
 

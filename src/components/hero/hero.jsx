@@ -49,7 +49,7 @@ const Hero = () => {
     return (
         <section className={styles.container}>
           <Logo />
-          <Socials />
+          <Socials component="hero"/>
             {showPhone && (
               <div className={styles.phone}>
                 <img 
