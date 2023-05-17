@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import SuperMask from '@/svg/super-mask'
 import Socials from '../socials/socials'
 
@@ -16,8 +18,8 @@ const Footer = () => {
       <div className={styles.contact}>
         <h5>CONTACT</h5>
         <h3>gotfilter@thefilterman.de</h3>
-        <h4>impressum</h4>
-        <h4>datenschutz</h4>
+        <Link href={"/impressum"}>impressum</Link>
+        <Link href={"/datenschutz"}>datenschutz</Link>
       </div>
       <div className={styles.links}>
         <Socials component='footer'/>
