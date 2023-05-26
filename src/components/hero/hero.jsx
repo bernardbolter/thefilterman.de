@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { useWindowSize } from '../../helpers/useWindowSize'
-
-import Logo from '../logo/logo'
-import Socials from '../socials/socials'
+import * as Scroll from 'react-scroll'
 
 import styles from './hero.module.scss'
 import filterStyles from '../../data/filterStyles'
 
-const Hero = () => {
+const Hero = ({ seeMore, learnMore }) => {
     const maskRef = useRef()
     const size = useWindowSize()
     const [showPhone, setShowPhone] = useState(false)
@@ -15,6 +13,7 @@ const Hero = () => {
     const [phoneY, setPhoneY] = useState(0)
     const [phoneWidth, setPhoneWidth] = useState(0)
     const [phoneHeight, setPhoneHeight] = useState(0)
+    var scroll = Scroll.animateScroll;
 
     useEffect(() => {
         window.addEventListener('pointermove', handleCursorMove)
@@ -47,9 +46,9 @@ const Hero = () => {
     }
 
     return (
-        <section className={styles.container}>
-          <Logo />
-          <Socials component="hero"/>
+        <section 
+          className={styles.container}
+        >
             {showPhone && (
               <div className={styles.phone}>
                 <img 
@@ -92,10 +91,13 @@ const Hero = () => {
                 <h4
                   onClick={() => {
                     showPhone
-                    ? window.scrollTo({top: size.height, behavior: 'smooth'})
+                    ? setShowPhone(false)
+                    : null
+                    showPhone
+                    ? scroll.scrollTo(size.height - 80)
                     : setShowPhone(!showPhone) 
                   }}
-                >{showPhone ? 'learn more...' : 'see more...'}</h4>
+                >{showPhone ? learnMore : seeMore}</h4>
             </div>
         </section>
     )

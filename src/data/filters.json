@@ -1,10 +1,23 @@
 [
     {
         "id" : 1,
-        "title" : "Man or Machine; the AI quiz"
+        "number" : "filter_1",
+        "filter" : "Future so bright",
+        "video_slug" : "future",
+        "platforms" : ["ig"]
     },
     {
         "id" : 2,
-        "title" : "Megacities - see the cities"
+        "number" : "filter_2",
+        "filter" : "Megacities - see the cities",
+        "video_slug" : "megacities",
+        "platforms" : ["ig"]
+    },
+    {
+        "id" : 3,
+        "number" : "filter_3",
+        "filter" : "Man or Machine; the AI quiz",
+        "video_slug" : "manmachine",
+        "platforms" : ["ig"]
     }
 ]

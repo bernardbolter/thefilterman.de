@@ -1,19 +1,250 @@
 @import '../../styles/var';
 
+.maxWidth {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .container {
   position: relative;
   width: 100%;
   top: 0;
   left: 0;
-  margin: 0;
-  padding: 5%;
+  margin: 0 auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $accentMuted;
+  background: $fm_mid;
+  width: 100%;
 
-  p {
-    font-size: 22px;
+  @media screen and (min-width: 799px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-family: 'Bangers', sans-serif;
+    font-size: 50px;
+    color: $fm_dark;
+    opacity: .90;
+    margin: 0;
+    padding: 70px 5%;
+    text-align: center;
+    width: 90%;
+  }
+
+  .firstRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 35px;
+
+    @media screen and (min-width: 799px) {
+      flex-direction: row;
+    }
+
+    h2 {
+      font-family: 'sf_cartoonist_handregular', sans-serif;
+      color: $fm_dark;
+      margin: -170px 0 0;
+      width: 90%;
+      padding: 20px 5%;
+      font-size: 29px;
+      line-height: 34px;
+      opacity: .9;
+
+      @media screen and (min-width: 799px) {
+        margin: 0 10% 0 -30%;
+        width: 70%;
+      }
+    }
+
+    svg {
+      width: 70%;
+      margin-right: auto;
+      margin-left: 5%;
+    }
+  }
+
+  .secondRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (min-width: 799px) {
+      flex-direction: row;
+    }
+
+    h3 {
+      font-family: 'sf_cartoonist_handregular', sans-serif;
+      color: $fm_dark;
+      margin: 30px 0 -270px;
+      width: 90%;
+      padding: 20px 5%;
+      font-size: 24px;
+      position: relative;
+      z-index: 301;
+      line-height: 32px;
+      opacity: .8;
+
+      @media screen and (min-width: 799px) {
+        margin: 0 -20% 0 10%;
+      }
+    }
+
+    svg {
+      width: 80%;
+      margin: 0 5% 0 auto;
+      position: relative;
+      z-index: 300;
+    }
+  }
+
+  .thirdRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 20px 5%;
+    background: $fm_light;
+    border-radius: 30px;
+    border: 10px solid $fm-dark;
+    
+    @media screen and (min-width: 799px) {
+      width: 80%;
+      margin: 20px 10%;
+    }
+
+
+    h4 {
+      font-family: 'sf_cartoonist_handregular', sans-serif;
+      color: $fm_dark;
+      width: 90%;
+      margin: 0;
+      padding: 7% 5%;
+      font-size: 22px;
+      line-height: 28px;
+      opacity: .8;
+      font-size: 24px;
+
+      @media screen and (min-width: 799px) {
+        font-size: 25px;
+        line-height: 32px;
+      }
+    }
+}
+
+  .fourthRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+
+    @media screen and (min-width: 799px) {
+      width: 100%;
+      margin: 5% 0;
+    }
+
+    .emailCall {
+      position: absolute;
+      opacity: .7;
+      transition: opacity .5s ease;
+      left: 1%;
+      top: 64%;
+      z-index: 310;
+      cursor: pointer;
+
+      @media screen and (min-width: 400px) {
+        left: 1%;
+        top: 70%;
+      }
+
+      @media screen and (min-width: 500px) {
+        left: 5%;
+        top: 74%;
+      }
+      @media screen and (min-width: 600px) {
+        top: 80%;
+      }
+
+      @media screen and (min-width: 700px) {
+        top: 83%;
+      }
+
+      @media screen and (min-width: 799px) {
+        left: 14%;
+        top: 77%;
+      }
+
+      @media screen and (min-width: 900px) {
+        top: 83%;
+      }
+
+      @media screen and (min-width: 1000px) {
+        top: 87%;
+      }
+
+      @media screen and (min-width: 1100px) {
+        top: 92%;
+      }
+
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    svg {
+      position: absolute;
+      width: 90%;
+
+      @media screen and (min-width: 799px) {
+        width: 70%;        
+      }
+    }
+
+    h5 {
+      font-family: 'sf_cartoonist_handregular', sans-serif;
+      color: $fm_dark;
+      width: 80%;
+      margin: 0;
+      padding: 10% 15% 100px 5%;
+      font-size: 20px;
+      line-height: 26px;
+      opacity: .8;
+
+      @media screen and (min-width: 799px) {
+        width: 100%;
+        font-size: 23px;
+        line-height: 30px;
+        padding: 10% 40% 5% 15%;
+      }
+    }
+  
+    h6 {
+      font-family: 'sf_cartoonist_handregular', sans-serif;
+      color: $fm_dark;
+      width: 80%;
+      margin: 0;
+      padding: 05% 10% 15%;
+      font-size: 20px;
+      line-height: 26px;
+      opacity: .8;
+
+      @media screen and (min-width: 799px) {
+        width: 100%;
+        font-size: 23px;
+        line-height: 30px;
+        padding: 10% 15% 5% 40%;
+      }
+    }
   }
 }

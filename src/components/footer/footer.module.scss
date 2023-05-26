@@ -11,8 +11,9 @@
   padding: 30px 0;
   background: $brandMuted;
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 950px) {
     flex-direction: row;
+    justify-content: flex-start;
   }
 }
 
@@ -22,13 +23,27 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 0;
 
-  @media screen and (min-width: 769px) {
-    width: 50%;
+  @media screen and (min-width: 799px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 0 0 5%;
+
+    @media screen and (min-width: 950px) {
+      width: auto;
+    }
   }
 
   h1 {
     color: $lightGrey;
+    font-family: 'Azeret Mono', monospace;
+    margin: 0;
+
+    @media screen and (min-width: 799px) {
+      margin: 0 0 0 10px;
+    }
   }
 }
 
@@ -40,12 +55,21 @@
   justify-content: center;
   align-items: center;
 
+  @media screen and (min-width: 799px) {
+    width: 50px;
+    height: 50px;
+  }
+
   svg {
     width: 85%;
     fill: $brand;
     position: relative;
     z-index: 102;
     margin: 10px 0 0 0;
+
+    @media screen and (min-width: 799px) {
+      margin: 4px 0 0 0;
+    }
   }
 
   .maskBack {
@@ -55,23 +79,69 @@
     background: $lightGrey;
     position: absolute;
     z-index: 101;
+
+    @media screen and (min-width: 799px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 
 .contact {
-  width: 80%;
-  margin: 0 10% 30px;
+  width: 100%;
+  font-family: "Jost", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 0;
+
+  @media screen and (min-width: 799px) {
+    width: 45%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 0 0 5%;
+  }
+
+  @media screen and (min-width: 950px) {
+    width: auto;
+    padding: 0 0 0 5%;
+  }
 
   h5 {
     color: $textLight;
     margin: 0;
     padding: 0;
+    font-weight: 300;
   }
 
   h3 {
     color: $background;
     margin: 5px 0 0;
     padding: 0;
+    font-weight: 400;
+  }
+}
+
+.impress {
+  width: 100%;
+  font-family: "Jost", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 0;
+
+  @media screen and (min-width: 799px) {
+    width: 45%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 0 5% 0 0;
+  }
+
+  @media screen and (min-width: 950px) {
+    width: auto;
+    margin: 0 0 0 auto;
   }
 
   a {
@@ -90,26 +160,26 @@
     color: $brand;
   }
 
-  @media screen and (min-width: 500px) {
-    width: 40%;
-    margin: 0 5%;
-    padding: 0;
-  }
+  // @media screen and (min-width: 500px) {
+  //   width: 40%;
+  //   margin: 0 5%;
+  //   padding: 0;
+  // }
 
-  @media screen and (min-width: 769px) {
-    width: 25%;
-  }
+  // @media screen and (min-width: 769px) {
+  //   width: 25%;
+  // }
 }
 
-.links {
-  width: 100%;
+// .links {
+//   width: 100%;
 
-  @media screen and (min-width: 500px) {
-    width: 50%;
-  }
+//   @media screen and (min-width: 500px) {
+//     width: 50%;
+//   }
 
-  @media screen and (min-width: 769px) {
-    width: 25%;
-  }
-}
+//   @media screen and (min-width: 769px) {
+//     width: 25%;
+//   }
+// }
 

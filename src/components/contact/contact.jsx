@@ -1,119 +1,142 @@
-import { useState } from 'react'
-import { Formik, Form, Field} from 'formik'
+import { useState, useEffect } from 'react'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Scroll from 'react-scroll';
+import emailjs from '@emailjs/browser'
 
 import ThreeDots from '../../svg/threeDots'
 
 import styles from './contact.module.scss'
 
 const FormSchema = Yup.object().shape({
-  ame: Yup.string().min(2).max(50).required('required'),
+  name: Yup.string().min(2).max(50).required('required'),
   email: Yup.string().email('invalid email').required('required'),
-  message: Yup.string().min(10).required('required')
+  message: Yup.string()
 })
 
-const Contact = () => {
-  const [responseMessage, setResponseMessage] = useState('')
-  const [formSubmitted, setFormSubmitted] = useState(false)
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#55ad55',
+    },
+    secondary: {
+      light: '#0066ff',
+      main: '#0044ff',
+      contrastText: '#ffcc00',
+    },
+    custom: {
+      light: '#ffa726',
+      main: '#f57c00',
+      dark: '#ef6c00',
+      contrastText: 'rgba(0, 0, 0, 0.87)',
+    },
 
-  const handleFocus = () => {
-      if (formSubmitted) {
-          setFormSubmitted(false)
-          setResponseMessage('')
-      }
-  }
+  },
+});
+
+const Contact = ({ tellFilter }) => {
+  const [responseMessage, setResponseMessage] = useState('')
+  var Element  = Scroll.Element;
+
+  useEffect(() => {
+    setResponseMessage('')
+  }, [])
+
   return (
-      <section className={styles.container}>
-          <div className={styles.info}>
-              <h1>Send us a message and</h1>
-              <h1>Lets see how we can make</h1>
-              <p>by email</p>
-              <h2>gotfilter@thefilterman.de</h2>
-            </div>
-            <div className="form">
-              <p>or use the form:</p>
-              <Formik
-                  initialValues={{
-                    name: '', 
-                    email: '', 
-                    message: ''
-                  }}
-                  validationSchema={FormSchema}
-                  onSubmit={
-                    async (
-                      values,
-                      { setSubmitting, resetForm }
-                    ) => {
-                      setSubmitting(true)
-                      const response = await fetch('/api/mail', {
-                        method: 'POST',
-                        body: JSON.stringify(values)
-                      })
-                      if (response.status === 200) {
-                        setResponseMessage("Your message has been sent, we will get back to you as soon as possible")
+      <ThemeProvider theme={theme}>
+        <section className={styles.container} id="contact">
+          <Element name="contact" />
+              <div className="theForm">
+                <Formik
+                    initialValues={{
+                      name: '', 
+                      email: '', 
+                      message: ''
+                    }}
+                    validationSchema={FormSchema}
+                    onSubmit={
+                      async (
+                        values,
+                        { setSubmitting, resetForm }
+                      ) => {
+                        setResponseMessage('')
+                        setSubmitting(true)
+                        console.log(values)
                         resetForm()
-                        setFormSubmitted(true)
-                        setSubmitting(false)
-                      } else {
-                        setResponseMessage("There was an error sending you\'re message, please try again later or send an email directly to smooth@smoothism.com")
-                        resetForm()
-                        setFormSubmitted(true)
-                        setSubmitting(false)
+                        emailjs.send('service_81nklij', 'template_1frwjcm', values, 'PFWrcYfkkkwphjIX8')
+                          .then(function(response) {
+                            setResponseMessage('Thanks for the message, Filter Man will get back to you soon')
+                            console.log('SUCCESS!', response.status, response.text);
+                          }, function(error) {
+                            setResponseMessage('Sorry, there was a problem sending the message, please try again later')
+                            console.log('FAILED...', error);
+                          });
                       }
                     }
-                  }
-              >
-                  {({ errors, touched, isSubmitting }) => {
-                      console.log("subing: ", isSubmitting)
-                      return (
-                      <Form name="smoothism-contact">
-                          <div className="form-input form-name">
-                              <label htmlFor="name">Name: </label>
-                              <Field
-                                  id="name"
-                                  name="name" 
-                                  onFocus={handleFocus}
-                              />
-                              {(errors.name && touched.name) && <div className="error-message">{errors.name}</div>}
-                          </div>
-                          <div className="form-input form-email">
-                              <label htmlFor="email">Email: </label>
-                              <Field 
-                                  id="email"
-                                  name="email" 
-                                  onFocus={handleFocus}    
-                              />
-                              {(errors.email && touched.email) && <div className="error-message">{errors.email}</div>}
-                          </div>
-                          <div className="form-input form-message">
-                              <label htmlFor="message">Message: </label>
-                              <Field
-                                  id="message"
-                                  name="message" 
-                                  component="textarea"
-                                  onFocus={handleFocus}    
-                              />
-                              {(errors.message && touched.message) && <div className="error-message">{errors.message}</div>}
-                          </div>
-                          {isSubmitting ? (
-                              <div className="form-blocks">
-                                  <ThreeDots />
-                              </div>
-                          ) : (
-                              <>
-                                  <button 
-                                      className="send-button" 
-                                      type="submit"  
-                                  >Send</button>
-                                  <p>{responseMessage.length !== 0 && responseMessage}</p>
-                              </>
-                          )}
+                >
+                    {({ values, errors, touched, isSubmitting, handleChange }) => {
+                        return (
+                            <Form name="fm_contact">
+                                <TextField
+                                fullWidth
+                                id="name"
+                                name="name"
+                                label="name"
+                                value={values.name}
+                                onChange={handleChange}
+                                error={touched.name && Boolean(errors.name)}
+                                helperText={touched.name && errors.name}
+                                margin="normal"
+                                required
+                            />
+                            <TextField
+                                fullWidth
+                                id="email"
+                                name="email"
+                                label="email"
+                                value={values.email}
+                                onChange={handleChange}
+                                error={touched.email && Boolean(errors.email)}
+                                helperText={touched.email && errors.email}
+                                margin="normal"
+                                required
+                            />
+                            <TextField
+                                fullWidth
+                                id="message"
+                                name="message"
+                                label={tellFilter}
+                                value={values.message}
+                                onChange={handleChange}
+                                error={touched.message && Boolean(errors.message)}
+                                helperText={touched.message && errors.message}
+                                margin="normal"
+                                multiline
+                                rows={4}
+                            />
                           
-                      </Form>
-                  )}}
-              </Formik>
-            </div>
-      </section>
+                            {isSubmitting ? (
+                                <div className="form-blocks">
+                                    <ThreeDots />
+                                </div>
+                            ) : (
+                              <Button color="primary" variant="contained" fullWidth type="submit">
+                                  submit
+                              </Button>
+                            )}
+                        </Form>
+                    )}}
+                </Formik>
+                {responseMessage.length !== 0 && (
+                  <p className={styles.response}>{responseMessage}</p>
+                )}
+              </div>
+        </section>
+      </ThemeProvider>
   )
 }
 

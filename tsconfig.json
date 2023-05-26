@@ -25,6 +25,6 @@
     "**/*.tsx",
     "src/components/hero/hero.jsx",
     "src/components/hero/hero.jsx"
-, "src/components/contact/contact.jsx", "src/components/contact/contact.jsx"  ],
+, "src/components/contact/contact.jsx", "src/components/contact/contact.jsx", "src/pages/index.jsx", "src/pages/de.jsx"  ],
   "exclude": ["node_modules"]
 }
