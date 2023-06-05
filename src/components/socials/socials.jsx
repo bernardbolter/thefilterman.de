@@ -6,9 +6,9 @@ import TikTok from '../../svg/tik-tok'
 
 import styles from './socials.module.scss'
 
-const Socials = () => {
+const Socials = ({ where }) => {
   return (
-    <div className={styles.container}>
+    <div className={where === "hero" ? styles.container : styles.containerFooter}>
       <Link href="">
         <Instagram />
       </Link>

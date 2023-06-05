@@ -21,3 +21,10 @@ h1 {
   font-family: var(--inconsolata-font);
   font-weight: 900;
 }
+
+.handwriting {
+  font-family: var(--caveat-font);
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}

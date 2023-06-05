@@ -49,7 +49,7 @@ const Hero = () => {
     return (
         <section className={styles.container}>
           <Logo />
-          <Socials />
+          <Socials where="hero" />
             {showPhone && (
               <div className={styles.phone}>
                 <img 
